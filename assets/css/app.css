@@ -1,0 +1,120 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.dropdown-content {
+  @apply absolute hidden mt-1;
+}
+
+
+.dropdown-content.open {
+  display: block;
+}
+
+
+.dropdown-link {
+  @apply capitalize py-2 px-4 font-light block rounded transition-colors duration-150 ease-in;
+}
+
+
+.dropdown-link:hover {
+  @apply bg-violet-400 text-white;
+
+  background-color: theme('colors.brand');
+}
+
+
+.bg-brand {
+  background-color: theme('colors.brand');
+}
+
+
+.bg-secondary {
+  background-color: theme('colors.secondary');
+}
+
+
+.button {
+  @apply rounded-lg phx-submit-loading:opacity-75 py-1 px-2 text-sm font-semibold leading-6 text-white active:text-white/80;
+
+  background-color: theme('colors.brand');
+}
+
+
+.button:hover {
+  background-color: theme('colors.secondary');
+}
+
+
+.h1 {
+  @apply text-3xl font-bold leading-10 font-serif;
+
+  color: theme('colors.secondary');
+}
+
+
+.h2 {
+  @apply text-2xl font-bold leading-8 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.h3 {
+  @apply text-xl font-bold leading-6 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.h4 {
+  @apply text-lg font-semibold leading-4 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.content {
+  @apply mt-16 font-light text-lg max-w-3xl mx-auto;
+}
+
+
+.content p {
+  @apply mt-8 leading-8;
+}
+
+
+.content h2 {
+  @apply text-2xl font-bold leading-8 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.content h3 {
+  @apply text-xl font-bold leading-6 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.content h4 {
+  @apply text-lg font-semibold leading-4 font-serif mb-4;
+
+  color: theme('colors.secondary');
+}
+
+
+.content ol {
+  @apply list-decimal mt-4;
+}
+
+
+.content ul {
+  @apply list-disc mt-4;
+}
+
+
+.content li {
+  @apply ml-8;
+}
