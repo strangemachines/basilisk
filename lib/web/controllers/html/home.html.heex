@@ -1,3 +1,54 @@
-<article>
-  <h1>Home</h1>
-</article>
+<nav class="bg-gray-50 fixed w-72 top-0 bottom-0 left-0">
+  <div class="p-2.5 absolute top-0 bottom-0 right-0 left-0 overflow-y-auto">
+    <div class="flex flex-col items-center align-center">
+      <a href="/">
+        <h1 class="h1">
+          <div :if={@spec["properties"]["logo"]}>
+            <img
+              src={@spec["properties"]["logo"]}
+              class="w-32"
+              title={@spec["properties"]["name"]}
+              alt="logo"
+            />
+          </div>
+          <p :if={@spec["properties"]["logo"] == nil}><%= @spec["properties"]["name"] %></p>
+        </h1>
+      </a>
+      <p class="text-sm mt-2">Version <%= @spec["properties"]["version"] %></p>
+      <a class="text-sm mt-4 underline" href="https://github.com/strangemachines/basilisk">
+        Generated with basilisk <%= @version %>
+      </a>
+    </div>
+    <div :for={{section_name, actions} <- @sections} class="mt-12">
+      <h2 class="h4 capitalize"><%= section_name %></h2>
+      <ul>
+        <li :for={action <- actions}>
+          <a class="text-sm" href={"##{action["name"]}"}>
+            <.action_name action={action} />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="flex flex-col mt-12 pl-6 ml-72">
+    <p><%= @spec["properties"]["description"] %></p>
+    <div :for={{section_name, actions} <- @sections} class="mt-10">
+      <section>
+        <h2 class="h2 capitalize"><%= section_name %></h2>
+        <div :for={action <- actions} id={"#{action["name"]}"} class="flex mt-8">
+          <div class="w-3/5">
+            <h3 class="h3"><.action_name action={action} /></h3>
+            <div :if={action["fields"]}>
+              <.action_fields action={action} />
+            </div>
+          </div>
+          <div class="w-2/5 mr-10">
+            <.action_example action={action} />
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
