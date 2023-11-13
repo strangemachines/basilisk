@@ -3,6 +3,9 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+import hljs from 'highlight.js';
+import json from 'highlight.js/lib/languages/json';
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 
@@ -47,3 +50,15 @@ window.addEventListener("phx:js-exec", ({ detail }) => {
     liveSocket.execJS(el, el.getAttribute(detail.attr))
   })
 });
+
+
+hljs.registerLanguage('json', json);
+
+
+document.querySelectorAll('.code.json')
+  .forEach((element) => {
+    const json = hljs.highlight(element.innerHTML, {language: 'json'});
+    element.innerHTML = json.value;
+  })
+
+window.hljs = hljs;

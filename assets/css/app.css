@@ -118,3 +118,8 @@
 .content li {
   @apply ml-8;
 }
+
+
+.hljs-attr {
+  margin-left: 18px;
+}
