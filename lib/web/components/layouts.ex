@@ -20,5 +20,7 @@ defmodule BasiliskWeb.Layouts do
 
   def description(_assigns), do: @description
 
+  def url(), do: BasiliskWeb.Endpoint.url()
+
   embed_templates "layouts/*"
 end
