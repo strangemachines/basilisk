@@ -52,7 +52,7 @@ config :basilisk,
   session_salt: "XdDrPN/W1kMm6iVvzdqon0XOacsb2NpV",
   support_email: "noreply@localhost",
   title: "Dev server",
-  version: "0.1.0"
+  version: "1.0.0"
 
 config :phoenix, :json_library, Jason
 
