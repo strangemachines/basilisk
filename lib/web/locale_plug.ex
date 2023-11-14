@@ -9,6 +9,10 @@ defmodule BasiliskWeb.LocalePlug do
   @cookies Application.compile_env(:basilisk, :cookies)
   @cookies_options Keyword.get(@cookies, :options, [])
   @locale_cookie_name Keyword.get(@cookies, :locale, "locale")
+
+  @gettext_config Application.compile_env(:basilisk, BasiliskWeb.Gettext)
+  @default_locale Keyword.get(@gettext_config, :default_locale)
+
   @locales Gettext.known_locales(BasiliskWeb.Gettext)
 
   def init(default_locale), do: default_locale
@@ -86,7 +90,7 @@ defmodule BasiliskWeb.LocalePlug do
   def call(conn, _opts) do
     case LocalePlug.from_params(conn) || LocalePlug.from_cookies(conn) ||
            LocalePlug.from_header(conn) do
-      nil -> conn
+      nil -> LocalePlug.set_locale(conn, @default_locale)
       locale -> LocalePlug.set_locale(conn, locale)
     end
   end
